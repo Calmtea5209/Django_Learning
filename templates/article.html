@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Article</title>
+</head>
+<body>
+    <h1>義大利麵排名</h1>
+    <hr>
+    {% for post in posts%}
+        <p style='font-family: 微軟正黑體;font-size:18pt;font-weight:bold;'>
+            {{post.title}}
+        </p>
+        <p style='font-family: 微軟正黑體;font-size:12pt;letter-spacing:1pt;'>
+            {{post.body}}
+        </p>
+    {% endfor %}
+    <hr>
+    <h3>現在時間: {{now}} </h3>
+</body>
+</html>
