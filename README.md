@@ -1,0 +1,1 @@
+# Process of learning Django
