@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Article</title>
-    <style type="text/css">
-        a{
-            color:rgb(245, 167, 66);
-        }
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %} Article {% endblock %}
+{% block headmessage %}
     <h1>義大利麵</h1>
-    <hr>
-    {% for post in posts%}
+{% endblock %}
+{% block content %}
+    {% for post in posts %}
         <p style='font-family: 微軟正黑體;font-size:18pt;font-weight:bold;'>
-            <a href='/article/{{post.slug}}'>{{post.title}}</a>
+            <a href="/article/{{post.slug}}">{{post.title}}</a>
         </p>
-    {% endfor %}
-    <hr>
-    <h3>現在時間: {{now}} </h3>
-</body>
-</html>
+    {% endfor%}
+{% endblock %}
