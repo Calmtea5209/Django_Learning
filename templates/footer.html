@@ -1,5 +1,7 @@
 {% block footer %}
     {% if now %}
-    <p style='font-family: 微軟正黑體;'>現在時間:{{now}}</p>
+    <p style='font-family: 微軟正黑體;font-size:12pt'>現在時間:{{now}}</p>
+    {% else %}
+    <a href="/article" style='font-family: 微軟正黑體;font-size:12pt'>回文章列表</a>
     {% endif %}
 {% endblock %}

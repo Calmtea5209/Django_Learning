@@ -15,6 +15,8 @@ def showpost(request,slug):
             return render(request,'showpost.html',locals())
     except:
         return redirect('/')
+def test(request):
+    return render(request,'test.html')
 
 
 # Create your views here.
