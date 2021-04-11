@@ -1,9 +1,13 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from datetime import datetime
 from .models import Post
-def homepage(request):
+from .form import RegisterForm,LoginForm
+
+def plan(request):
     return render(request,"main.html")
 def article(request):
     posts = Post.objects.all()
@@ -16,18 +20,29 @@ def showpost(request,slug):
             return render(request,'showpost.html',locals())
     except:
         return redirect('/')
-def signup(request):
-    form = UserCreationForm()
+def register(request):
+    form = RegisterForm()
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login2')
+            return redirect('/accounts/login')
 
-    context = {
-        'form':form
-    }
-    return render(request,'login.html',context)
+    return render(request,'register.html',locals())
+def signin(request):
+    form = LoginForm()
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('/')
+    return render(request,'signin.html',locals())
+def signout(request):
+    logout(request)
+    return redirect('/')
+
 def test(request):
     return render(request,'test.html')
 

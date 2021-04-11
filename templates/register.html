@@ -1,0 +1,10 @@
+{% extends 'base2.html' %}
+{% block headline %} 註冊 {% endblock %}
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <input class="btn btn-primary"type="submit" >
+    </form>
+{% endblock %}

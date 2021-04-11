@@ -1,0 +1,11 @@
+{% extends 'base2.html' %}
+{% block headline %} 登入 {% endblock %}
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <input class="btn btn-primary"type="submit" ><p></p>
+        <p>什麼? 你說你還沒有帳號? ---><a href="/accounts/register">點擊註冊</a>
+    </form>
+{% endblock %}
