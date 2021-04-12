@@ -20,8 +20,9 @@
                 <div class='panel-body'>
                     <div class='list-group'>
                         <a href="/article" class='list-group-item'>首頁</a>
-                        <a href="/admin" class='list-group-item'>管理</a>
+                        <a href="/admin" class='list-group-item'>後端管理</a>
                         {% if request.user.is_authenticated %}
+                            <a href="/write_article" class='list-group-item'>撰寫文章</a>
                             <a href="/accounts/logout" class='list-group-item'>登出</a>
                         {% else %}
                             <a href="/accounts/login" class='list-group-item'>登入</a>

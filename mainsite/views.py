@@ -4,13 +4,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from datetime import datetime
-from .models import Post
-from .form import RegisterForm,LoginForm
+from .models import Post,Write
+from .form import RegisterForm,LoginForm,WriteArticleForm
 
 def plan(request):
     return render(request,"main.html")
 def article(request):
-    posts = Post.objects.all()
+    posts = Write.objects.all()
     now = datetime.now()
     return render(request,"article.html",locals())
 def showpost(request,slug):
@@ -42,7 +42,14 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect('/')
-
+def write_article(request):
+    write_form = WriteArticleForm()
+    if request.method == "POST":
+        write_form = WriteArticleForm(request.POST)
+        if write_form.is_valid():
+            write_form.save()
+            return redirect('/')
+    return render(request,'write_article.html',locals())
 def test(request):
     return render(request,'test.html')
 
