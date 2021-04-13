@@ -17,3 +17,5 @@ class Write(models.Model):
     title = models.CharField(u"標題",default="",max_length=200)
     context = RichTextField(u"內容",default="")
     pub_time = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title

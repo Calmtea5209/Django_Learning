@@ -13,9 +13,9 @@ def article(request):
     posts = Write.objects.all()
     now = datetime.now()
     return render(request,"article.html",locals())
-def showpost(request,slug):
+def showpost(request,id):
     try:
-        post = Post.objects.get(slug = slug)
+        post = Write.objects.get(id=id)
         if post != None:
             return render(request,'showpost.html',locals())
     except:
@@ -50,6 +50,13 @@ def write_article(request):
             write_form.save()
             return redirect('/')
     return render(request,'write_article.html',locals())
+def delete_article(request,id):
+    try:
+        post = Write.objects.get(id=id)
+        if post != None:
+            return render(request,'delete_article.html',locals())
+    except:
+        return redirect('/article/'+id)
 def test(request):
     return render(request,'test.html')
 
