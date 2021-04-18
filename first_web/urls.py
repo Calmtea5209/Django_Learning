@@ -19,13 +19,13 @@ from mainsite.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('article/<int:id>/',showpost,name="article-url"),
-    path('article/delete/<int:id>',delete_article,name="article-delete"),
-    path('test',test),
-    path('accounts/register',register),
-    path('accounts/login',signin),
-    path('accounts/logout',signout),
-    path('write_article',write_article),
-    path('plan',plan),
+    path('article/delete/<int:id>/',delete_article,name="article-delete"),
+    path('article/update/<int:id>/',update_article,name="article-update"),
+    path('accounts/register/',register,name="accounts-register"),
+    path('accounts/login/',signin,name="accounts-login"),
+    path('accounts/logout/',signout,name="accounts-logout"),
+    path('write_article/',write_article),
+    path('plan/',plan),
     path('',article),
     
 ]

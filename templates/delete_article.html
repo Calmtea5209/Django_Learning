@@ -1,10 +1,13 @@
 {% extends "base2.html" %}
 {% block headline %} 刪除文章 {% endblock %}
 {% block content %}
-<form action="POST">
-    <br>
-    <p style="font-family:微軟正黑體;font-size:15pt;">是否確定刪除 {{post.title}}?</p>
-    <input class="btn btn-danger"type="submit" value="確定">
-    <a class="btn btn-warning" href='{% url "article-url" post.id%}' ></a>
+
+<br>
+<p style="font-family:微軟正黑體;font-size:15pt;">是否確定刪除 {{post.title}} 這篇文章?</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input class="btn btn-success"type="submit" value="確定">
+    <a class="btn btn-warning" href='{% url "article-url" post.id%}' role="button">取消</a>
+
 </form>
 {% endblock %}

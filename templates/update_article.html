@@ -1,0 +1,12 @@
+{% extends 'base2.html' %}
+{% block headline %} 更改內容 {% endblock %}
+{% block content %}
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{write_form.media}}
+        {{write_form.as_p}}
+        <br>
+        <input class="btn btn-primary"type="submit" ><p></p>
+    </form>
+{% endblock %}
