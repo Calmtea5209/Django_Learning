@@ -10,16 +10,16 @@
 * VSCode
 
 ## 網站主要頁面
-
-* 首頁  /
-* 登入  /accounts/login
-* 登出   /accounts/logout
-* 註冊   /accounts/register
-* 撰寫文章   /write_article
-* 文章內頁   /article/文章id
-* 刪除文章  /article/delete/文章id
-* 修改文章  /article/update/文章id
-
+```
+首頁  /
+登入  /accounts/login
+登出   /accounts/logout
+註冊   /accounts/register
+撰寫文章   /write_article
+文章內頁   /article/文章id
+刪除文章  /article/delete/文章id
+修改文章  /article/update/文章id
+```
 ## 目前網站外觀
 
 ### 首頁(登入前)
