@@ -9,17 +9,18 @@ from .models import Post,Write
 from .form import RegisterForm,LoginForm,WriteArticleForm
 
 def plan(request):
-    return render(request,"main.html")
+    return render(request,"plan.html")
 
 def article(request):
     posts = Write.objects.all()
     now = datetime.now()
-    return render(request,"article.html",locals())
+    return render(request,"index.html",locals())
 
 def showpost(request,id):
     if request.user.is_authenticated:
         username = request.user.username
         user = User.objects.get(username=username)
+
     try:
         post = Write.objects.get(id=id)
         if post != None:
@@ -70,8 +71,15 @@ def write_article(request):
 
 @login_required(login_url='/accounts/login')
 def update_article(request,id):
-    article = Write.objects.get(id=id)
-    write_form = WriteArticleForm(instance=article)
+    if request.user.is_authenticated:
+        user_id = request.user.id
+
+    try:
+        article = Write.objects.get(id=id)
+        if user_id != article.user.id:
+            return redirect('/')
+    except:
+        return redirect('/')
 
     if request.method == "POST":
         write_form = WriteArticleForm(request.POST,instance=article)
@@ -86,13 +94,20 @@ def delete_article(request,id):
         post = Write.objects.get(id=id)
         post.delete()
         return redirect('/')
+
     try:
         post = Write.objects.get(id=id)
+
+        if request.user.is_authenticated:
+            user_id = request.user.id
+        if user_id != post.user.id:
+            return redirect('/')
+
         if post != None:
             return render(request,'delete_article.html',locals())
     except:
-        return redirect('/article/'+id)
-    
+        return redirect('/article/' + str(id))
+
 
 
 # Create your views here.
