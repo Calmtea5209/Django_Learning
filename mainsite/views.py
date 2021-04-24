@@ -71,22 +71,24 @@ def write_article(request):
 
 @login_required(login_url='/accounts/login')
 def update_article(request,id):
-    if request.user.is_authenticated:
-        user_id = request.user.id
-
-    try:
-        article = Write.objects.get(id=id)
-        if user_id != article.user.id:
-            return redirect('/')
-    except:
-        return redirect('/')
-
     if request.method == "POST":
+        article = Write.objects.get(id=id)
         write_form = WriteArticleForm(request.POST,instance=article)
         if write_form.is_valid():
             write_form.save()
             return redirect('/')
-    return render(request,"update_article.html",locals())
+
+    try:
+        article = Write.objects.get(id=id)
+        write_form = WriteArticleForm(instance=article)
+        if request.user.is_authenticated:
+            user_id = request.user.id
+        if user_id != article.user.id:
+            return redirect('/')
+        return render(request,"update_article.html",locals())
+        
+    except:
+        return redirect('/')
 
 @login_required(login_url='/accounts/login')
 def delete_article(request,id):
