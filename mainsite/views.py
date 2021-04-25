@@ -81,12 +81,13 @@ def update_article(request,id):
     try:
         article = Write.objects.get(id=id)
         write_form = WriteArticleForm(instance=article)
+        
         if request.user.is_authenticated:
             user_id = request.user.id
         if user_id != article.user.id:
             return redirect('/')
         return render(request,"update_article.html",locals())
-        
+
     except:
         return redirect('/')
 
