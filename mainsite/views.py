@@ -13,6 +13,7 @@ def plan(request):
 
 def article(request):
     posts = Write.objects.all()
+    posts = reversed(posts)
     now = datetime.now()
     return render(request,"index.html",locals())
 
