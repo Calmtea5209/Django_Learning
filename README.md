@@ -2,9 +2,11 @@
 
 ## 目前功能
 * 擁有登入、登出、註冊系統
-* 紀錄撰寫文章之使用者
+* 顯示文章作者與最後修改時間
 * 針對登入與否，顯示不同的頁面
 * 使用者可自由增加、修改、刪除文章
+* 非創建文章之使用者無法修改、刪除文章
+* 文章顯示順序依照發佈先後排序
 
 ## 開發工具
 * VSCode
@@ -23,21 +25,28 @@
 ## 目前網站外觀
 
 ### 首頁(登入前)
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/1.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/homepage(before).PNG)
 
 ### 首頁(登入後)
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/6.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/homepage(after).PNG)
 
 ### 登入
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/2.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/login.PNG)
 
 ### 註冊
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/3.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/register.PNG)
 
 ### 撰寫文章
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/5.PNG)
-### 文章內頁範例
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/4.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/write.PNG)
+
+### 文章內頁範例1(登入前)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/article1(before).PNG)
+
+### 文章內頁範例2(登入後)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/article1(before).PNG)
+
+### 更新文章
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/article1(after).PNG)
 
 ### 刪除文章
-![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/7.PNG)
+![alt text](https://github.com/Calmtea5209/Django_Learning/blob/master/images/delete.PNG)
