@@ -5,15 +5,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from datetime import datetime
-from .models import Post,Write
-from .form import RegisterForm,LoginForm,WriteArticleForm
+from .models import Post,Write,Profile
+from .form import RegisterForm,LoginForm,WriteArticleForm,ProfileForm
 
 def plan(request):
     return render(request,"plan.html")
 
 def article(request):
     posts = Write.objects.all()
-    posts = reversed(posts)
+    posts = reversed(posts) #按文章建立時間排序(新->舊)
     now = datetime.now()
     return render(request,"index.html",locals())
 
@@ -112,6 +112,22 @@ def delete_article(request,id):
     except:
         return redirect('/article/' + str(id))
 
+def showprofile(request,id):
+    if request.method == "POST":
+        user = User.objects.get(id=id)
+        profile = Profile(user=user)
+        profile_form = ProfileForm(request.POST,instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('/')
+    try:
+        user = User.objects.get(id=id)
+        if user != None:
+            user_info = Profile.objects.get(user=user)
+            profile_form = ProfileForm()
+            return render(request,'showprofile.html',locals())
+    except:
+        return redirect('/')
 
 
 # Create your views here.

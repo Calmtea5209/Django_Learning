@@ -10,7 +10,7 @@ admin.site.register(Write)
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
-    list_display=('user','nickname')
+    list_display=('user','nickname','gender')
 
 class ProfileInline(admin.StackedInline): #把Profile加進User model
     model=Profile
@@ -18,10 +18,13 @@ class ProfileInline(admin.StackedInline): #把Profile加進User model
 
 class UserAdmin(BaseUserAdmin): #定義Admin
     inlines = (ProfileInline,)
-    list_display = ('username','nickname','email','is_staff','is_active','is_superuser')
+    list_display = ('username','nickname','gender','email','is_staff','is_active','is_superuser')
     def nickname(self,obj):
         return obj.profile.nickname
+    def gender(self,obj):
+        return obj.profile.gender
     nickname.short_description = "暱稱"
+    gender.short_description = "性別"
 
 admin.site.unregister(User) #重新註冊Admin
 admin.site.register(User,UserAdmin)

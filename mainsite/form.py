@@ -43,3 +43,9 @@ class WriteArticleForm(forms.ModelForm):
         model = Write
         fields = ['title','context']
 
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['nickname','gender']
+

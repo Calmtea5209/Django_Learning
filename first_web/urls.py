@@ -21,10 +21,11 @@ urlpatterns = [
     path('article/<int:id>/',showpost,name="article-url"),
     path('article/delete/<int:id>/',delete_article,name="article-delete"),
     path('article/update/<int:id>/',update_article,name="article-update"),
+    path('article/write/',write_article,name="article-write"),
     path('accounts/register/',register,name="accounts-register"),
     path('accounts/login/',signin,name="accounts-login"),
     path('accounts/logout/',signout,name="accounts-logout"),
-    path('write_article/',write_article),
+    path('profile/<int:id>',showprofile,name="profile-url"),
     path('plan/',plan),
     path('',article),
     
