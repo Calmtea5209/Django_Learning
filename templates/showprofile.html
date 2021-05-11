@@ -6,18 +6,21 @@
             font-size:15pt;;
         }
     </style>
-    <br>
+    <br>{{ user_info.image.url }}
+    <img class="card-img-top" src="{{ user_info.image.url }}" />
     <p>帳號:{{user_info.user.username}}</p>
     <p>名稱:{{user_info.nickname}}</p>
     <p>性別:{{user_info.gender}}</p>
     <p>電子郵件:{{user_info.user.email}}</p>
 
     {% if user.is_authenticated %}
-        <form action="" method="POST">
+        <br>
+        <form action="" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <table>
                 {{profile_form.as_table}}
             </table>
+            <br>
             <input class="btn btn-primary"type="submit" value="修改個人資料" >
         </form>
     {% endif %}

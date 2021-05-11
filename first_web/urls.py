@@ -26,7 +26,7 @@ urlpatterns = [
     path('accounts/login/',signin,name="accounts-login"),
     path('accounts/logout/',signout,name="accounts-logout"),
     path('profile/<int:id>',showprofile,name="profile-url"),
-    path('plan/',plan),
+    path('plan/',plan,name="plan-detail"),
     path('',article),
     
 ]

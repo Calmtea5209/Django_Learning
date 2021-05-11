@@ -115,8 +115,8 @@ def delete_article(request,id):
 def showprofile(request,id):
     if request.method == "POST":
         user = User.objects.get(id=id)
-        profile = Profile(user=user)
-        profile_form = ProfileForm(request.POST,instance=profile)
+        profile = Profile.objects.get(user=user)
+        profile_form = ProfileForm(request.POST,request.FILES,instance=profile)
         if profile_form.is_valid():
             profile_form.save()
             return redirect('/')
@@ -124,7 +124,7 @@ def showprofile(request,id):
         user = User.objects.get(id=id)
         if user != None:
             user_info = Profile.objects.get(user=user)
-            profile_form = ProfileForm()
+            profile_form = ProfileForm(instance=user_info)
             return render(request,'showprofile.html',locals())
     except:
         return redirect('/')
