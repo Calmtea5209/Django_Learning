@@ -17,8 +17,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     GENDER = (('男性', '男性'),('女性', '女性'),('其他', '其他'),('不公開', '不公開'))
     gender = models.CharField(u'性別',choices=GENDER,max_length=10,default='不公開')
-    nickname = models.CharField(u"暱稱",max_length=20)
-    image = models.ImageField(u'照片',upload_to='',default='None')
+    nickname = models.CharField(u"暱稱",max_length=20,default="無")
+    image = models.ImageField(u'照片',upload_to='%Y/%m/%d/',default='default.png')
+    intro = models.CharField(u"自我介紹",default="這個人很懶，什麼也沒打",max_length=100)
     def __str__(self):
         return self.user.username
 

@@ -1,0 +1,22 @@
+{% extends 'base2.html' %}
+{% block headline %} 搜尋文章 {% endblock %}
+{% block content %}
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <p style="display: inline;font-size: 15pt;"><br>標題:</p>{{ ArticleFilter.form.title }}
+        <br>
+        <input type="submit" class="btn btn-primary" value="查詢" />
+    </form><br>
+    <table class="table">
+        <thead>
+            <th style="font-size: 18pt;">標題</th>
+        </thead>
+        <tbody>
+            {% for article in ArticleFilter.qs %}
+            <tr>
+                <td style="font-size: 15pt;"><a href="/article/{{article.id}}" style="color:#ff9a01e8">{{ article.title }}</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

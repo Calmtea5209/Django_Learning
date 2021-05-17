@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from .models import Post,Write,Profile
 from .form import RegisterForm,LoginForm,WriteArticleForm,ProfileForm
+from .filters import articleFilter
 
 def plan(request):
     return render(request,"plan.html")
@@ -123,11 +124,25 @@ def showprofile(request,id):
     try:
         user = User.objects.get(id=id)
         if user != None:
+            try:
+                user_info = Profile.objects.get(user=user)
+            except:
+                Profile.objects.create(user=user)
+
             user_info = Profile.objects.get(user=user)
             profile_form = ProfileForm(instance=user_info)
             return render(request,'showprofile.html',locals())
     except:
         return redirect('/')
+
+def search(request):
+    articles = Write.objects.all()
+ 
+    ArticleFilter = articleFilter(queryset=articles)
+ 
+    if request.method == "POST":
+        ArticleFilter = articleFilter(request.POST, queryset=articles)
+    return render(request,'search.html',locals())
 
 
 # Create your views here.

@@ -47,7 +47,7 @@ class WriteArticleForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['nickname','gender','image']
+        fields = ['nickname','gender','intro','image']
         widgets = {
             'image': forms.FileInput(attrs={'class': 'form-control-file'})
         }
