@@ -144,5 +144,7 @@ def search(request):
         ArticleFilter = articleFilter(request.POST, queryset=articles)
     return render(request,'search.html',locals())
 
+    
+
 
 # Create your views here.

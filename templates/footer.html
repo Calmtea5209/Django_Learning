@@ -2,7 +2,7 @@
     {% if now %}
     <p style='font-family: 微軟正黑體;font-size:12pt'>現在時間:{{now}}</p>
     {% elif post.user %}
-    <p style='display:inline; font-family: 微軟正黑體;font-size:12pt'>Writed by <a href='{% url "profile-url" post.id%}' style='font-size:12pt;color:rgb(0, 0, 0);'>{{post.user}} </a></p>
+    <p style='display:inline; font-family: 微軟正黑體;font-size:12pt'>Writed by <a href='{% url "profile-url" post.user.id%}' style='font-size:12pt;color:rgb(0, 0, 0);'>{{post.user}} </a></p>
     {% else %}
     <a href="/" style='font-family: 微軟正黑體;font-size:12pt'>回文章列表</a>
     {% endif %}
