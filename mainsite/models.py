@@ -19,7 +19,7 @@ class Profile(models.Model):
     gender = models.CharField(u'性別',choices=GENDER,max_length=10,default='不公開')
     nickname = models.CharField(u"暱稱",max_length=20,default="無")
     image = models.ImageField(u'照片',upload_to='%Y/%m/%d/',default='default.png')
-    intro = models.CharField(u"自我介紹",default="這個人很懶，什麼也沒打",max_length=100)
+    intro = models.CharField(u"自我介紹",default="這個人什麼也沒打.w.",max_length=100)
     def __str__(self):
         return self.user.username
 
