@@ -13,15 +13,17 @@
     <p>電子郵件:{{user_info.user.email}}</p>
     <p>自我介紹:{{user_info.intro}}</p>
 
-    {% if user.is_authenticated %}
-        <br>
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <table>
-                {{profile_form.as_table}}
-            </table>
+    {% if request.user.is_authenticated %}
+        {% if request.user.id == user_info.user.id %}
             <br>
-            <input class="btn btn-primary"type="submit" value="修改個人資料" >
-        </form>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {{profile_form.as_table}}
+                </table>
+                <br>
+                <input class="btn btn-primary"type="submit" value="修改個人資料" >
+            </form>
+        {% endif %}
     {% endif %}
 {% endblock %}
